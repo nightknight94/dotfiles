@@ -2,7 +2,7 @@
 # Using `sudo` to simplify which command needs root premissions
 
 # Update and upgrade
-# sudo apt update && sudo apt full-upgrade -y
+sudo apt update && sudo apt full-upgrade -y
 
 # Copy and set wallpaper
 sudo cp ./wallpaper/earth.jpg /usr/share/backgrounds/
@@ -15,15 +15,18 @@ packages=(git wget cmake firefox terminator)
 for package in "${packages[@]}" 
 do
 	echo "[info] Installing: ${package}"
-	# sudo apt install -y &>/dev/null
+	sudo apt install -y &>/dev/null
 done
 
 # Install VS Code
 # for now there is minor bug with snap version (might need manual installation from .deb)
-# sudo snap install --classic vscode
+sudo snap install --classic vscode
 
 # Install VS Code extensions
-# vscode --install-extension ms-vscode.cpptools
-# vscode --install-extension twxs.cmake
-# vscode --install-extension EugenWiens.bitbake
-# vscode --install-extension CoenraadS.bracket-pair-colorizer
+vscode --install-extension ms-vscode.cpptools
+vscode --install-extension twxs.cmake
+vscode --install-extension EugenWiens.bitbake
+vscode --install-extension CoenraadS.bracket-pair-colorizer
+
+# Configure terminator
+cp -v terminator/config ~/.config/terminator/config
