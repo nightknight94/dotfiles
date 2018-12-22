@@ -1,6 +1,11 @@
 #!/bin/bash
 # Using `sudo` to simplify which command needs root premissions
 
+# TODO: Add sidebar customization
+# TODO: Add night light customization
+# TODO: Add bitbake syntax to vim (copy vim config)
+# TODO: Split to multiple scripts (run by root and user)
+
 # Update and upgrade
 sudo apt update && sudo apt full-upgrade -y
 
@@ -29,4 +34,4 @@ vscode --install-extension EugenWiens.bitbake
 vscode --install-extension CoenraadS.bracket-pair-colorizer
 
 # Configure terminator
-cp -v terminator/config ~/.config/terminator/config
+cp -v terminator/config $HOME/.config/terminator/config
