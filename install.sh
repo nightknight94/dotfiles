@@ -32,6 +32,10 @@ vscode --install-extension ms-vscode.cpptools
 vscode --install-extension twxs.cmake
 vscode --install-extension EugenWiens.bitbake
 vscode --install-extension CoenraadS.bracket-pair-colorizer
+vscode --install-extension jdinhlife.gruvbox
 
 # Configure terminator
 cp -v terminator/config $HOME/.config/terminator/config
+
+# Configure VS Code
+cp -v vscode/settings.json $HOME/.config/Code/User/settings.json
