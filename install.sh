@@ -1,19 +1,23 @@
 #!/bin/bash
 # Using `sudo` to simplify which command needs root premissions
 
-# TODO: Add sidebar customization
 # TODO: Add night light customization
-# TODO: Add bitbake syntax to vim (copy vim config)
+# TODO: Copy vim configs
 # TODO: Split to multiple scripts (run by root and user)
 
 # Update and upgrade
 sudo apt update && sudo apt full-upgrade -y
 
-# Copy and set wallpaper
+# Copy wallpapers
 sudo cp ./wallpaper/earth.jpg /usr/share/backgrounds/
 sudo cp ./wallpaper/stairs.jpg /usr/share/backgrounds/
+
+# Set wallpaper and lockscreen
 gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/stairs.jpg
 gsettings set org.gnome.desktop.screensaver picture-uri file:///usr/share/backgrounds/stairs.jpg
+
+# Set sidebar width
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 35
 
 # Installing packages
 packages=(git wget cmake firefox terminator curl)
