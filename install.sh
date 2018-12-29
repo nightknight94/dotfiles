@@ -11,8 +11,9 @@ sudo apt update && sudo apt full-upgrade -y
 
 # Copy and set wallpaper
 sudo cp ./wallpaper/earth.jpg /usr/share/backgrounds/
-gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/earth.jpg
-gsettings set org.gnome.desktop.screensaver picture-uri file:///usr/share/backgrounds/earth.jpg
+sudo cp ./wallpaper/stairs.jpg /usr/share/backgrounds/
+gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/stairs.jpg
+gsettings set org.gnome.desktop.screensaver picture-uri file:///usr/share/backgrounds/stairs.jpg
 
 # Installing packages
 packages=(git wget cmake firefox terminator curl)
