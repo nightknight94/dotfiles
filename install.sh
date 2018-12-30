@@ -4,7 +4,6 @@
 # TODO: Add night light customization
 # TODO: Copy vim configs
 # TODO: Split to multiple scripts (run by root and user)
-# TODO: Copy .bashrc
 
 # Update and upgrade
 sudo apt update && sudo apt full-upgrade -y
@@ -53,3 +52,5 @@ cp -v vscode/settings.json $HOME/.config/Code/User/settings.json
 cp -v gedit/gruvbox-dark.xml $HOME/.local/share/gedit/styles/gruvbox-dark.xml
 gsettings set org.gnome.gedit.preferences.editor scheme gruvbox-dark
 
+# Overwrite .bashrc
+cp -v .bashrc $HOME/.bashrc
