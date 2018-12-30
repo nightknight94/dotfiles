@@ -53,4 +53,5 @@ cp -v gedit/gruvbox-dark.xml $HOME/.local/share/gedit/styles/gruvbox-dark.xml
 gsettings set org.gnome.gedit.preferences.editor scheme gruvbox-dark
 
 # Overwrite .bashrc
-cp -v .bashrc $HOME/.bashrc
+cp -v bashrc $HOME/.bashrc
+

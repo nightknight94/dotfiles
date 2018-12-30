@@ -180,6 +180,6 @@ unset BGREEN GREEN BRED RED BBLUE BLUE BORANGE ORANGE NORMAL
 export EDITOR=vim
 export BROWSER=firefox
 
-alias cp='cp -vi'
-alias mv='mv -vi'
-alias rm='rm -vi'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
