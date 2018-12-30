@@ -1,0 +1,11 @@
+[user]
+	name = nightknight94
+	email = xenofly94@gmail.com
+[alias]
+	s = status -s
+	l = log --decorate --oneline -10
+
+[format]
+    pretty=format:%C(yellow)%h%Creset -%C(bold red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+
+

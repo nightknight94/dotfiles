@@ -55,3 +55,6 @@ gsettings set org.gnome.gedit.preferences.editor scheme gruvbox-dark
 # Overwrite .bashrc
 cp -v bashrc $HOME/.bashrc
 
+# Overwrite .gitconfig
+cp -v gitconfig $HOME/.gitconfig
+
