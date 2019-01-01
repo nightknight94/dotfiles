@@ -58,3 +58,6 @@ cp -v bashrc $HOME/.bashrc
 # Overwrite .gitconfig
 cp -v gitconfig $HOME/.gitconfig
 
+# Configure Midnight Commander
+cp -v mc/ini $HOME/.config/mc/ini
+
