@@ -61,3 +61,5 @@ cp -v gitconfig $HOME/.gitconfig
 # Configure Midnight Commander
 cp -v mc/ini $HOME/.config/mc/ini
 
+# Configure dircolors
+cp -v dircolors $HOME/.dircolors
