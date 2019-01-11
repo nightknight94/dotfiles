@@ -6,6 +6,14 @@
 	l = log --decorate --oneline -10
 
 [format]
-    pretty=format:%C(yellow)%h%Creset -%C(bold red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
-
-
+	pretty = format:%C(yellow)%h%Creset -%C(bold red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+[code]
+	editor = code --wait --new-window
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait --new-window $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --new-window --diff $LOCAL $REMOTE
