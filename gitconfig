@@ -2,18 +2,44 @@
 	name = nightknight94
 	email = xenofly94@gmail.com
 [alias]
+	amend = commit --amend
 	s = status -s
 	l = log --decorate --oneline -10
 
 [format]
 	pretty = format:%C(yellow)%h%Creset -%C(bold red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+
+[core]
+   pager = /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less
+
 [code]
 	editor = code --wait --new-window
+
 [merge]
 	tool = vscode
+
 [mergetool "vscode"]
 	cmd = code --wait --new-window $MERGED
+
 [diff]
 	tool = vscode
+
 [difftool "vscode"]
 	cmd = code --wait --new-window --diff $LOCAL $REMOTE
+
+[color]
+	ui = auto
+
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	commit = yellow
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22

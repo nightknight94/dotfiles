@@ -56,6 +56,7 @@ gsettings set org.gnome.gedit.preferences.editor scheme gruvbox-dark
 cp -v bashrc $HOME/.bashrc
 
 # Overwrite .gitconfig
+sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
 cp -v gitconfig $HOME/.gitconfig
 
 # Configure Midnight Commander
