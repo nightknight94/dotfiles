@@ -1,0 +1,24 @@
+BasedOnStyle: LLVM
+
+Language: Cpp
+AccessModifierOffset: -4
+AllowShortIfStatementsOnASingleLine: false
+BreakBeforeBraces: Allman
+ColumnLimit: 0
+IncludeBlocks:   Regroup
+IncludeCategories: 
+  - Regex:           '^"(log)/'
+    Priority:        4
+  - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority:        3
+  - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
+    Priority:        1
+  - Regex:           '.*'
+    Priority:        2
+IndentCaseLabels: true
+IndentWidth: 4
+PointerAlignment: Middle
+SortIncludes: true
+TabWidth: 4
+UseTab: ForIndentation
+
