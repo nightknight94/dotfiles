@@ -1,66 +1,81 @@
 #!/bin/bash
-# Using `sudo` to simplify which command needs root premissions
 
 # TODO: Add night light customization
-# TODO: Copy vim configs
-# TODO: Split to multiple scripts (run by root and user)
+
+if ! [ $(id -u) = 0 ]; then
+   echo "The script need to be run as root." >&2
+   exit 1
+fi
+
+if [ $SUDO_USER ]; then
+    real_user=$SUDO_USER
+else
+    real_user=$(whoami)
+fi
 
 # Update and upgrade
-sudo apt update && sudo apt full-upgrade -y
+apt update && apt full-upgrade -y
 
 # Copy wallpapers
-sudo cp ./wallpaper/earth.jpg /usr/share/backgrounds/
-sudo cp ./wallpaper/stairs.jpg /usr/share/backgrounds/
+cp ./wallpaper/earth.jpg /usr/share/backgrounds/
+cp ./wallpaper/stairs.jpg /usr/share/backgrounds/
 
 # Set wallpaper and lockscreen
-gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/stairs.jpg
-gsettings set org.gnome.desktop.screensaver picture-uri file:///usr/share/backgrounds/stairs.jpg
+sudo -u $real_user gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/stairs.jpg
+sudo -u $real_user gsettings set org.gnome.desktop.screensaver picture-uri file:///usr/share/backgrounds/stairs.jpg
 
 # Show batery percentage
-gsettings set org.gnome.desktop.interface show-battery-percentage true
+sudo -u $real_user gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # Installing packages
-packages=(git wget cmake firefox terminator curl)
+packages=(
+	         gcc g++ net-tools git wget cmake firefox
+             terminator curl libavcodec-extra mc
+         )
 
 for package in "${packages[@]}" 
 do
 	echo "[info] Installing: ${package}"
-	sudo apt install -y &>/dev/null
+	apt install -y ${package} &>/dev/null
 done
 
 # Install VS Code
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update
-sudo apt install code -y &>/dev/null
+install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+apt update
+apt install code -y &>/dev/null
 
 # Install VS Code extensions
-code --install-extension ms-vscode.cpptools
-code --install-extension twxs.cmake
-code --install-extension EugenWiens.bitbake
-code --install-extension CoenraadS.bracket-pair-colorizer
-code --install-extension jdinhlife.gruvbox
-
-# Configure terminator
-cp -v terminator/config $HOME/.config/terminator/config
-
-# Configure VS Code
-cp -v vscode/settings.json $HOME/.config/Code/User/settings.json
-
-# Configure gedit
-cp -v gedit/gruvbox-dark.xml $HOME/.local/share/gedit/styles/gruvbox-dark.xml
-gsettings set org.gnome.gedit.preferences.editor scheme gruvbox-dark
+sudo -u $real_user code --install-extension ms-vscode.cpptools
+sudo -u $real_user code --install-extension twxs.cmake
+sudo -u $real_user code --install-extension EugenWiens.bitbake
+sudo -u $real_user code --install-extension CoenraadS.bracket-pair-colorizer
+sudo -u $real_user code --install-extension jdinhlife.gruvbox
 
 # Overwrite .bashrc
 cp -v bashrc $HOME/.bashrc
 
 # Overwrite .gitconfig
-sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
 cp -v gitconfig $HOME/.gitconfig
-
-# Configure Midnight Commander
-cp -v mc/ini $HOME/.config/mc/ini
 
 # Configure dircolors
 cp -v dircolors $HOME/.dircolors
+
+# Configure terminator
+mkdir -p $HOME/.config/terminator/
+cp -v terminator/config $HOME/.config/terminator/config
+
+# Configure VS Code
+mkdir -p $HOME/.config/Code/User/
+cp -v vscode/settings.json $HOME/.config/Code/User/settings.json
+
+# Configure gedit
+mkdir -p $HOME/.local/share/gedit/styles/
+cp -v gedit/gruvbox-dark.xml $HOME/.local/share/gedit/styles/gruvbox-dark.xml
+sudo -u $real_user gsettings set org.gnome.gedit.preferences.editor scheme gruvbox-dark
+
+# Configure Midnight Commander
+mkdir -p $HOME/.config/mc/
+cp -v mc/ini $HOME/.config/mc/ini
