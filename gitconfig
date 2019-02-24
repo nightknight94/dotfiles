@@ -5,6 +5,8 @@
 	amend = commit --amend
 	s = status -s
 	l = log --decorate --oneline -10
+	b = branch
+	showtool = "!showci () { rev=${1:-HEAD}; git difftool $rev~1 $rev; }; showci $1"
 
 [format]
 	pretty = format:%C(yellow)%h%Creset -%C(bold red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
