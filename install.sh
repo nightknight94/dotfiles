@@ -2,6 +2,8 @@
 
 # TODO: Add night light customization
 
+set -o errexit
+
 if ! [ $(id -u) = 0 ]; then
    echo "The script need to be run as root." >&2
    exit 1
@@ -79,3 +81,6 @@ sudo -u $real_user gsettings set org.gnome.gedit.preferences.editor scheme gruvb
 # Configure Midnight Commander
 mkdir -p $HOME/.config/mc/
 cp -v mc/ini $HOME/.config/mc/ini
+
+set +o errexit
+
