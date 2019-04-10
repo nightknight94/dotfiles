@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# TODO: switch to `sh` shell (if possible)
 # TODO: Add night light customization
 
 set -o errexit
@@ -81,6 +82,10 @@ sudo -u $real_user gsettings set org.gnome.gedit.preferences.editor scheme gruvb
 # Configure Midnight Commander
 mkdir -p $HOME/.config/mc/
 cp -v mc/ini $HOME/.config/mc/ini
+
+# Copy vim bitbake syntax
+mkdir -p $HOME/.vim
+cp -v -r vim/* $HOME/.vim/
 
 set +o errexit
 
