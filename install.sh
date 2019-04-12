@@ -32,8 +32,9 @@ sudo -u $real_user gsettings set org.gnome.desktop.interface show-battery-percen
 
 # Installing packages
 packages=(
-	         gcc g++ net-tools git wget cmake firefox
+	     gcc g++ net-tools git wget cmake firefox
              terminator curl libavcodec-extra mc
+	     ranger highlight
          )
 
 for package in "${packages[@]}" 

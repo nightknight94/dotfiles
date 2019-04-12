@@ -183,3 +183,5 @@ export BROWSER=firefox
 alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -v'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias rr='ranger'
